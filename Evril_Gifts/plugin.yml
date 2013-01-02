@@ -1,0 +1,8 @@
+    name: Evril_Gifts
+    main: com.github.Skycrawler67.Evril.Gifts.Gifts
+    version: 1.0
+    description: >
+                 Gift Plugin for EvrilServer.
+    commands:
+      EvrilGift:
+        description: Give you a gift!
