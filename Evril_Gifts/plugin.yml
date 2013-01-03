@@ -1,8 +1,11 @@
     name: Evril_Gifts
     main: com.github.Skycrawler67.Evril.Gifts.Gifts
+    author: Skycrawler67
+    website: http://82.228.8.188/
     version: 1.0
     description: >
                  Gift Plugin for EvrilServer.
+    load: POSTWORLD
     commands:
       EvrilGift:
         description: Give you a gift!
