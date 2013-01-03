@@ -68,23 +68,31 @@ public class Gifts extends JavaPlugin
 		{
 			if(this.getConfig().getBoolean("Activate") == true)
 			{
-				if (args.length == 0)
+				if (player.hasPermission("evril.gift.create"))
 				{
-					this.giveGift(player,"1");
-					player.sendMessage(ChatColor.GOLD + "EvrilGift gived !");
+					if (args.length == 0)
+					{
+						this.giveGift(player,"1");
+						player.sendMessage(ChatColor.GOLD + "EvrilGift gived !");
+					}
+					if (args.length == 1)
+					{
+						if (args[0].equalsIgnoreCase("reload"))
+						{
+							configuration.reloadConfig();
+							player.sendMessage(ChatColor.GREEN + "[Evril-Gift] Configuration Reloaded");
+						}
+						else
+						{
+							this.giveGift(player,args[0]);
+							player.sendMessage(ChatColor.GOLD + args[0] + " EvrilGift gived !");
+						}
+					}
 				}
-				if (args.length == 1)
+				else if (!player.hasPermission("evril.gift.create"))
 				{
-					if (args[0].equalsIgnoreCase("reload"))
-					{
-						configuration.reloadConfig();
-						player.sendMessage(ChatColor.GREEN + "[Evril-Gift] Configuration Reloaded");
-					}
-					else
-					{
-						this.giveGift(player,args[0]);
-						player.sendMessage(ChatColor.GOLD + args[0] + " EvrilGift gived !");
-					}
+					player.sendMessage(ChatColor.RED + "[Evril-Gift] You don't have the permssion to do that");
+					player.sendMessage(ChatColor.RED + "Permissions required : " + ChatColor.GREEN + "evril.gift.create");
 				}
 			}
 		}
