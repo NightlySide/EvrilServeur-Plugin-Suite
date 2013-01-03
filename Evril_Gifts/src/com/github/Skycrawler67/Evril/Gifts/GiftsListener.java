@@ -60,7 +60,7 @@ public class GiftsListener implements Listener{
 							{
 								e.getPlayer().setItemInHand(null);
 							}
-							e.getPlayer().sendMessage(ChatColor.GOLD + "Vous avez utilisé votre " + plugin.getConfig().getString("Gift Name") + " !");
+							e.getPlayer().sendMessage(ChatColor.GOLD + "You've just use one " + plugin.getConfig().getString("Gift Name") + " !");
 							
 							for (String item1 : items)
 							{
@@ -77,14 +77,14 @@ public class GiftsListener implements Listener{
 							itemamount.add(Integer.parseInt(args[1]));
 							}
 							
-							e.getPlayer().sendMessage(ChatColor.GREEN + "[Evril-Gift] Vous avez reçu : " + itemamount.get(numItem) + " " + itemname.get(numItem));
+							e.getPlayer().sendMessage(ChatColor.GREEN + "[Evril-Gift] You've receive : " + itemamount.get(numItem) + " " + itemname.get(numItem));
 							e.getPlayer().getInventory().addItem(itemStacks.get(numItem));
 							
 							e.getPlayer().updateInventory();
 				        }
 						else
 						{
-							e.getPlayer().sendMessage(ChatColor.RED + "[Evril-Gift] Votre Inventaire est plein !");
+							e.getPlayer().sendMessage(ChatColor.RED + "[Evril-Gift] You inventory is full !");
 						}
 					}
 				}
