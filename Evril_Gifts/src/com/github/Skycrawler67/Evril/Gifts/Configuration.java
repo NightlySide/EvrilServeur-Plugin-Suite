@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class Configuration
 {
 	public Gifts plugin;
-	
 	public Configuration(Gifts plugin)
 	{
 		this.plugin = plugin;

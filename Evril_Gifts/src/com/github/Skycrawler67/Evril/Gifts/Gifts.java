@@ -4,8 +4,6 @@ import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -21,6 +19,7 @@ public class Gifts extends JavaPlugin
 	private static ItemStack gift;
 	protected Configuration configuration = new Configuration(this);
 	public ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+	private GiftsCommands commands;
 
 
 	@Override
@@ -30,6 +29,10 @@ public class Gifts extends JavaPlugin
 		configuration.loadConfig();
 		PluginManager pm = this.getServer().getPluginManager();
 		pm.registerEvents(new GiftsListener(this), this);
+		
+		commands = new GiftsCommands(this);
+		getCommand("evrilgift").setExecutor(commands);
+		
 		console.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + pdf.getName() + ChatColor.DARK_GRAY + "]" + ChatColor.GREEN + " Version " + pdf.getVersion() + " has been Enabled !");
 	}
 	
@@ -60,42 +63,4 @@ public class Gifts extends JavaPlugin
     	double r = (Math.round(value * Math.pow(10, n))) / (Math.pow(10, n));
     	return r;
     } 
-    
-	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
-	{
-		Player player = (Player) sender;
-		if(commandLabel.equalsIgnoreCase("EvrilGift"))
-		{
-			if(this.getConfig().getBoolean("Activate") == true)
-			{
-				if (player.hasPermission("evril.gift.create"))
-				{
-					if (args.length == 0)
-					{
-						this.giveGift(player,"1");
-						player.sendMessage(ChatColor.GOLD + "EvrilGift gived !");
-					}
-					if (args.length == 1)
-					{
-						if (args[0].equalsIgnoreCase("reload"))
-						{
-							configuration.reloadConfig();
-							player.sendMessage(ChatColor.GREEN + "[Evril-Gift] Configuration Reloaded");
-						}
-						else
-						{
-							this.giveGift(player,args[0]);
-							player.sendMessage(ChatColor.GOLD + args[0] + " EvrilGift gived !");
-						}
-					}
-				}
-				else if (!player.hasPermission("evril.gift.create"))
-				{
-					player.sendMessage(ChatColor.RED + "[Evril-Gift] You don't have the permssion to do that");
-					player.sendMessage(ChatColor.RED + "Permissions required : " + ChatColor.GREEN + "evril.gift.create");
-				}
-			}
-		}
-		return false;
-	}
 }
