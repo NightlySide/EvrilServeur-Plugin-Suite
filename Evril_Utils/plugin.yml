@@ -1,0 +1,11 @@
+    name: Evril_Utils
+    main: com.github.Skycrawler67.Evril.Utils.Utils
+    author: Skycrawler67
+    website: http://evril-serveur.servegame.com/
+    version: 0.1
+    description: >
+                 Utils Plugin for EvrilServer.
+    load: POSTWORLD
+    commands:
+      EvrilUtils:
+        description: Utils Info
