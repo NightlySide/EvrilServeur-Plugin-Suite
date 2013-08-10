@@ -2,7 +2,7 @@
     main: com.github.Skycrawler67.Evril.Gifts.Gifts
     author: Skycrawler67
     website: http://evril-serveur.servegame.com/
-    version: 1.0
+    version: 1.1
     description: >
                  Gift Plugin for EvrilServer.
     load: POSTWORLD
